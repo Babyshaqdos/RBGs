@@ -19,9 +19,8 @@
             flex-direction: column;
             align-items: center;
         }
-        .day-checkbox-container {
-            display: inline-block;
-            margin-right: 15px; /* Add some spacing between the days */
+        .day-section label {
+            display: inline-block; /* Keep checkbox labels next to the checkboxes */
         }
 
     </style>
@@ -45,18 +44,18 @@
 
                     // Add time checkboxes to the day section
                     daySection.innerHTML = `<h3>${dayName}:</h3>
-                        <input type="checkbox" name="times_${dayName}" value="10am-11am"> 10am to 11am<br>
-                        <input type="checkbox" name="times_${dayName}" value="11am-12pm"> 11am to 12pm<br>
-                        <input type="checkbox" name="times_${dayName}" value="12pm-1pm"> 12pm to 1pm<br>
-                        <input type="checkbox" name="times_${dayName}" value="1pm-2pm"> 1pm to 2pm<br>
-                        <input type="checkbox" name="times_${dayName}" value="2pm-3pm"> 2pm to 3pm<br>
-                        <input type="checkbox" name="times_${dayName}" value="3pm-4pm"> 3pm to 4pm<br>
-                        <input type="checkbox" name="times_${dayName}" value="4pm-5pm"> 4pm to 5pm<br>
-                        <input type="checkbox" name="times_${dayName}" value="5pm-6pm"> 5pm to 6pm<br>
-                        <input type="checkbox" name="times_${dayName}" value="6pm-7pm"> 6pm to 7pm<br>
-                        <input type="checkbox" name="times_${dayName}" value="7pm-8pm"> 7pm to 8pm<br>
-                        <input type="checkbox" name="times_${dayName}" value="8pm-9pm"> 8pm to 9pm<br>
-                        <input type="checkbox" name="times_${dayName}" value="9pm-10pm"> 9pm to 10pm<br><br>`;
+                        <label><input type="checkbox" name="times_${dayName}" value="10am-11am"> 10am to 11am</label><br>
+                        <label><input type="checkbox" name="times_${dayName}" value="11am-12pm"> 11am to 12pm</label><br>
+                        <label><input type="checkbox" name="times_${dayName}" value="12pm-1pm"> 12pm to 1pm</label><br>
+                        <label><input type="checkbox" name="times_${dayName}" value="1pm-2pm"> 1pm to 2pm</label><br>
+                        <label><input type="checkbox" name="times_${dayName}" value="2pm-3pm"> 2pm to 3pm</label><br>
+                        <label><input type="checkbox" name="times_${dayName}" value="3pm-4pm"> 3pm to 4pm</label><br>
+                        <label><input type="checkbox" name="times_${dayName}" value="4pm-5pm"> 4pm to 5pm</label><br>
+                        <label><input type="checkbox" name="times_${dayName}" value="5pm-6pm"> 5pm to 6pm</label><br>
+                        <label><input type="checkbox" name="times_${dayName}" value="6pm-7pm"> 6pm to 7pm</label><br>
+                        <label><input type="checkbox" name="times_${dayName}" value="7pm-8pm"> 7pm to 8pm</label><br>
+                        <label><input type="checkbox" name="times_${dayName}" value="8pm-9pm"> 8pm to 9pm</label><br>
+                        <label><input type="checkbox" name="times_${dayName}" value="9pm-10pm"> 9pm to 10pm</label><br><br>`;
 
                     // Add the new day section to the time options container
                     timeOptionsContainer.appendChild(daySection);
@@ -75,15 +74,13 @@
         <input type="text" id="name" name="name" required><br><br>
 
         <label for="days">Preferred Days:</label><br>
-        <div id="daysContainer">
-            <div class="day-checkbox-container"><input type="checkbox" name="days" value="Monday" onchange="showTimeOptions()"> Monday</div>
-            <div class="day-checkbox-container"><input type="checkbox" name="days" value="Tuesday" onchange="showTimeOptions()"> Tuesday</div>
-            <div class="day-checkbox-container"><input type="checkbox" name="days" value="Wednesday" onchange="showTimeOptions()"> Wednesday</div>
-            <div class="day-checkbox-container"><input type="checkbox" name="days" value="Thursday" onchange="showTimeOptions()"> Thursday</div>
-            <div class="day-checkbox-container"><input type="checkbox" name="days" value="Friday" onchange="showTimeOptions()"> Friday</div>
-            <div class="day-checkbox-container"><input type="checkbox" name="days" value="Saturday" onchange="showTimeOptions()"> Saturday</div>
-            <div class="day-checkbox-container"><input type="checkbox" name="days" value="Sunday" onchange="showTimeOptions()"> Sunday</div>
-        </div><br>
+        <input type="checkbox" name="days" value="Monday" onchange="showTimeOptions()"> Monday</div>
+        <input type="checkbox" name="days" value="Tuesday" onchange="showTimeOptions()"> Tuesday</div>
+        <input type="checkbox" name="days" value="Wednesday" onchange="showTimeOptions()"> Wednesday</div>
+        <input type="checkbox" name="days" value="Thursday" onchange="showTimeOptions()"> Thursday</div>
+        <input type="checkbox" name="days" value="Friday" onchange="showTimeOptions()"> Friday</div>
+        <input type="checkbox" name="days" value="Saturday" onchange="showTimeOptions()"> Saturday</div>
+        <input type="checkbox" name="days" value="Sunday" onchange="showTimeOptions()"> Sunday</div><br>
 
         <!-- Container for dynamically generated time options -->
         <div id="timeOptionsContainer"></div>
