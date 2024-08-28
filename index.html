@@ -5,6 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meeting Poll</title>
     <link rel="stylesheet" href="style.css">
+
+     <script>
+        function showTimeOptions() {
+            // Get the selected days checkboxes
+            const days = document.querySelectorAll('input[name="days"]:checked');
+            const timeOptionsContainer = document.getElementById('timeOptionsContainer');
+            
+            // Clear previous time options
+            timeOptionsContainer.innerHTML = '';
+
+            // Loop through selected days and create corresponding time options
+            days.forEach(day => {
+                const dayName = day.value;
+
+                // Create a new section for each selected day
+                const daySection = document.createElement('div');
+                daySection.innerHTML = `<h3>Preferred Times for ${dayName}:</h3>
+                <input type="checkbox" name="times_${dayName}" value="10am-11am"> 10am to 11am<br>
+                <input type="checkbox" name="times_${dayName}" value="11am-12pm"> 11am to 12pm<br>
+                <input type="checkbox" name="times_${dayName}" value="12pm-1pm"> 12pm to 1pm<br>
+                <input type="checkbox" name="times_${dayName}" value="1pm-2pm"> 1pm to 2pm<br>
+                <input type="checkbox" name="times_${dayName}" value="2pm-3pm"> 2pm to 3pm<br>
+                <input type="checkbox" name="times_${dayName}" value="3pm-4pm"> 3pm to 4pm<br>
+                <input type="checkbox" name="times_${dayName}" value="4pm-5pm"> 4pm to 5pm<br>
+                <input type="checkbox" name="times_${dayName}" value="5pm-6pm"> 5pm to 6pm<br>
+                <input type="checkbox" name="times_${dayName}" value="6pm-7pm"> 6pm to 7pm<br>
+                <input type="checkbox" name="times_${dayName}" value="7pm-8pm"> 7pm to 8pm<br>
+                <input type="checkbox" name="times_${dayName}" value="8pm-9pm"> 8pm to 9pm<br>
+                <input type="checkbox" name="times_${dayName}" value="9pm-10pm"> 9pm to 10pm<br><br>
+                // Add the section to the time options container
+                timeOptionsContainer.appendChild(daySection);
+            });
+        }
+    </script>
 </head>
 <body>
     <h1>Meeting Availability Poll</h1>
@@ -13,29 +47,18 @@
         <input type="text" id="name" name="name" required><br><br>
 
         <label for="days">Preferred Days:</label><br>
-        <input type="checkbox" name="days" value="Monday"> Monday<br>
-        <input type="checkbox" name="days" value="Tuesday"> Tuesday<br>
-        <input type="checkbox" name="days" value="Wednesday"> Wednesday<br>
-        <input type="checkbox" name="days" value="Thursday"> Thursday<br>
-        <input type="checkbox" name="days" value="Friday"> Friday<br>
-        <input type="checkbox" name="days" value="Saturday"> Saturday<br>
-        <input type="checkbox" name="days" value="Sunday"> Sunday<br><br>
+        <input type="checkbox" name="days" value="Monday" onchange="showTimeOptions()"> Monday<br>
+        <input type="checkbox" name="days" value="Tuesday" onchange="showTimeOptions()"> Tuesday<br>
+        <input type="checkbox" name="days" value="Wednesday" onchange="showTimeOptions()"> Wednesday<br>
+        <input type="checkbox" name="days" value="Thursday" onchange="showTimeOptions()"> Thursday<br>
+        <input type="checkbox" name="days" value="Friday" onchange="showTimeOptions()"> Friday<br>
+        <input type="checkbox" name="days" value="Saturday" onchange="showTimeOptions()"> Saturday<br>
+        <input type="checkbox" name="days" value="Sunday" onchange="showTimeOptions()"> Sunday<br><br>
 
-        <label for="times">Preferred Times:</label><br>
-        <input type="checkbox" name="times" value="10am-11am"> 10am to 11am<br>
-        <input type="checkbox" name="times" value="11am-12pm"> 11am to 12pm<br>
-        <input type="checkbox" name="times" value="12pm-1pm"> 12pm to 1pm<br>
-        <input type="checkbox" name="times" value="1pm-2pm"> 1pm to 2pm<br>
-        <input type="checkbox" name="times" value="2pm-3pm"> 2pm to 3pm<br>
-        <input type="checkbox" name="times" value="3pm-4pm"> 3pm to 4pm<br>
-        <input type="checkbox" name="times" value="4pm-5pm"> 4pm to 5pm<br>
-        <input type="checkbox" name="times" value="5pm-6pm"> 5pm to 6pm<br>
-        <input type="checkbox" name="times" value="6pm-7pm"> 6pm to 7pm<br>
-        <input type="checkbox" name="times" value="7pm-8pm"> 7pm to 8pm<br>
-        <input type="checkbox" name="times" value="8pm-9pm"> 8pm to 9pm<br>
-        <input type="checkbox" name="times" value="9pm-10pm"> 9pm to 10pm<br><br>
-
-        <label for="comments">Additional Comments (More serious, less serious, you suck at pvp, L2Play, etc.):</label><br>
+        <!-- Container for dynamically generated time options -->
+        <div id="timeOptionsContainer"></div>
+        
+        <label for="comments">Additional Comments (More serious, less serious, I'm Commish but my real name is ___, etc.):</label><br>
         <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br><br>
 
         <button type="submit">Submit</button>
