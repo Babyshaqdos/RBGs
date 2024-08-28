@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Poll</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Meeting Availability Poll</h1>
+    <form id="pollForm" action="https://formspree.io/f/xnnawbyq" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="days">Preferred Days:</label><br>
+        <input type="checkbox" name="days" value="Monday"> Monday<br>
+        <input type="checkbox" name="days" value="Tuesday"> Tuesday<br>
+        <input type="checkbox" name="days" value="Wednesday"> Wednesday<br>
+        <input type="checkbox" name="days" value="Thursday"> Thursday<br>
+        <input type="checkbox" name="days" value="Friday"> Friday<br><br>
+
+        <label for="times">Preferred Times:</label><br>
+        <input type="checkbox" name="times" value="10am-11am"> 10am to 11am<br>
+        <input type="checkbox" name="times" value="11am-12pm"> 11am to 12pm<br>
+        <input type="checkbox" name="times" value="12pm-1pm"> 12pm to 1pm<br>
+        <input type="checkbox" name="times" value="1pm-2pm"> 1pm to 2pm<br>
+        <input type="checkbox" name="times" value="2pm-3pm"> 2pm to 3pm<br>
+        <input type="checkbox" name="times" value="3pm-4pm"> 3pm to 4pm<br>
+        <input type="checkbox" name="times" value="4pm-5pm"> 4pm to 5pm<br>
+        <input type="checkbox" name="times" value="5pm-6pm"> 5pm to 6pm<br>
+        <input type="checkbox" name="times" value="6pm-7pm"> 6pm to 7pm<br>
+        <input type="checkbox" name="times" value="7pm-8pm"> 7pm to 8pm<br>
+        <input type="checkbox" name="times" value="8pm-9pm"> 8pm to 9pm<br>
+        <input type="checkbox" name="times" value="9pm-10pm"> 9pm to 10pm<br><br>
+
+        <label for="comments">Additional Comments:</label><br>
+        <textarea id="comments" name="comments" rows="4" cols="50"></textarea><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
