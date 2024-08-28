@@ -6,37 +6,59 @@
     <title>Meeting Poll</title>
     <link rel="stylesheet" href="style.css">
 
-     <script>
+    <style>
+        /* Add styles for displaying time options horizontally */
+        #timeOptionsContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Add some spacing between days */
+        }
+
+        .day-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+
+    <script>
         function showTimeOptions() {
             // Get the selected days checkboxes
-            const days = document.querySelectorAll('input[name="days"]:checked');
+            const days = document.querySelectorAll('input[name="days"]');
             const timeOptionsContainer = document.getElementById('timeOptionsContainer');
-            
-            // Clear previous time options
-            timeOptionsContainer.innerHTML = '';
 
-            // Loop through selected days and create corresponding time options
+            // Loop through all days to see which are checked and add or retain their time options
             days.forEach(day => {
                 const dayName = day.value;
+                const existingDaySection = document.getElementById(`times-for-${dayName}`);
 
-                // Create a new section for each selected day
-                const daySection = document.createElement('div');
-                daySection.innerHTML = `<h3>Preferred Times for ${dayName}:</h3>
-                <input type="checkbox" name="times_${dayName}" value="10am-11am"> 10am to 11am<br>
-                <input type="checkbox" name="times_${dayName}" value="11am-12pm"> 11am to 12pm<br>
-                <input type="checkbox" name="times_${dayName}" value="12pm-1pm"> 12pm to 1pm<br>
-                <input type="checkbox" name="times_${dayName}" value="1pm-2pm"> 1pm to 2pm<br>
-                <input type="checkbox" name="times_${dayName}" value="2pm-3pm"> 2pm to 3pm<br>
-                <input type="checkbox" name="times_${dayName}" value="3pm-4pm"> 3pm to 4pm<br>
-                <input type="checkbox" name="times_${dayName}" value="4pm-5pm"> 4pm to 5pm<br>
-                <input type="checkbox" name="times_${dayName}" value="5pm-6pm"> 5pm to 6pm<br>
-                <input type="checkbox" name="times_${dayName}" value="6pm-7pm"> 6pm to 7pm<br>
-                <input type="checkbox" name="times_${dayName}" value="7pm-8pm"> 7pm to 8pm<br>
-                <input type="checkbox" name="times_${dayName}" value="8pm-9pm"> 8pm to 9pm<br>
-                <input type="checkbox" name="times_${dayName}" value="9pm-10pm"> 9pm to 10pm<br><br>`;
-                
-                
-                timeOptionsContainer.appendChild(daySection);
+                if (day.checked && !existingDaySection) {
+                    // Create a new section for each selected day
+                    const daySection = document.createElement('div');
+                    daySection.classList.add('day-section');
+                    daySection.id = `times-for-${dayName}`; // Assign a unique ID for each day section
+
+                    // Add time checkboxes to the day section
+                    daySection.innerHTML = `<h3>${dayName}:</h3>
+                        <input type="checkbox" name="times_${dayName}" value="10am-11am"> 10am to 11am<br>
+                        <input type="checkbox" name="times_${dayName}" value="11am-12pm"> 11am to 12pm<br>
+                        <input type="checkbox" name="times_${dayName}" value="12pm-1pm"> 12pm to 1pm<br>
+                        <input type="checkbox" name="times_${dayName}" value="1pm-2pm"> 1pm to 2pm<br>
+                        <input type="checkbox" name="times_${dayName}" value="2pm-3pm"> 2pm to 3pm<br>
+                        <input type="checkbox" name="times_${dayName}" value="3pm-4pm"> 3pm to 4pm<br>
+                        <input type="checkbox" name="times_${dayName}" value="4pm-5pm"> 4pm to 5pm<br>
+                        <input type="checkbox" name="times_${dayName}" value="5pm-6pm"> 5pm to 6pm<br>
+                        <input type="checkbox" name="times_${dayName}" value="6pm-7pm"> 6pm to 7pm<br>
+                        <input type="checkbox" name="times_${dayName}" value="7pm-8pm"> 7pm to 8pm<br>
+                        <input type="checkbox" name="times_${dayName}" value="8pm-9pm"> 8pm to 9pm<br>
+                        <input type="checkbox" name="times_${dayName}" value="9pm-10pm"> 9pm to 10pm<br><br>`;
+
+                    // Add the new day section to the time options container
+                    timeOptionsContainer.appendChild(daySection);
+                } else if (!day.checked && existingDaySection) {
+                    // If the day is unchecked, remove its time options section
+                    timeOptionsContainer.removeChild(existingDaySection);
+                }
             });
         }
     </script>
